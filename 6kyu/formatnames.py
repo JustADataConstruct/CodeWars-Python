@@ -6,10 +6,7 @@ Given: an array containing hashes of names
 Return: a string formatted as a list of names separated by commas except for the last two names, which should be separated by an ampersand.
 22-05-21
 """
-
-
-import unittest
-
+import codewars_test as test
 
 def namelist(names=[]):
     if len(names) == 0:
@@ -23,18 +20,11 @@ def namelist(names=[]):
     result = name_list[:index] + " &" + name_list[index+1:]
     return result
 
-
-class Test(unittest.TestCase):
-    def test(self):
-        self.assertEqual(namelist([{'name': 'Bart'}, {'name': 'Lisa'}, {'name': 'Maggie'}, {'name': 'Homer'}, {'name': 'Marge'}]), 'Bart, Lisa, Maggie, Homer & Marge',
-                         "Must work with many names")
-        self.assertEqual(namelist([{'name': 'Bart'}, {'name': 'Lisa'}, {'name': 'Maggie'}]), 'Bart, Lisa & Maggie',
-                         "Must work with many names")
-        self.assertEqual(namelist([{'name': 'Bart'}, {'name': 'Lisa'}]), 'Bart & Lisa',
-                         "Must work with two names")
-        self.assertEqual(
-            namelist([{'name': 'Bart'}]), 'Bart', "Wrong output for a single name")
-        self.assertEqual(namelist([]), '', "Must work with no names")
-
-
-unittest.main(verbosity=2)
+test.assert_equals(namelist([{'name': 'Bart'},{'name': 'Lisa'},{'name': 'Maggie'},{'name': 'Homer'},{'name': 'Marge'}]), 'Bart, Lisa, Maggie, Homer & Marge',
+"Must work with many names")
+test.assert_equals(namelist([{'name': 'Bart'},{'name': 'Lisa'},{'name': 'Maggie'}]), 'Bart, Lisa & Maggie',
+"Must work with many names")
+test.assert_equals(namelist([{'name': 'Bart'},{'name': 'Lisa'}]), 'Bart & Lisa', 
+"Must work with two names")
+test.assert_equals(namelist([{'name': 'Bart'}]), 'Bart', "Wrong output for a single name")
+test.assert_equals(namelist([]), '', "Must work with no names")
