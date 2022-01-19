@@ -1,2 +1,6 @@
 unfinished/*
 venv/*
+
+poetry.lock
+pyproject.toml
+requeriments.txt
